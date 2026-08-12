@@ -113,7 +113,7 @@ The database will be tested using a fresh MySQL database to ensure that:
 
 ## 9. Team members and Collaboration
 **Members.**
-Nancy(group leader), stella, Melekh, Michael, Michael, Angelah, Wendy, Jane, Otieno, Josphat, Vincent
+Nancy(group leader), Stella, Melekh, Michael, Michael, Angelah, Wendy, Jane, Otieno, Josphat, Vincent
 
 **Collaboration**
 The project is developed collaboratively using GitHub.
