@@ -32,3 +32,21 @@ INSERT INTO bookings (guest_id, room_id, check_in_date, check_out_date, booking_
     (3, 1, '2026-08-30', '2026-09-02', 'confirmed'),
     (4, 3, '2026-10-01', '2026-10-05', 'confirmed'),
     (5, 2, '2026-08-08', '2026-08-10', 'checked_out');
+
+-- payment records
+INSERT INTO payments (booking_id, amount, payment_date, payment_method, status) VALUES
+    (1, 450.00, '2026-08-10', 'credit_card', 'completed'),
+    (2, 300.00, '2026-08-15', 'paypal', 'completed'),
+    (3, 400.00, '2026-07-05', 'bank_transfer', 'completed'),
+    (4, 350.00, '2026-08-10', 'credit_card', 'completed'),
+    (5, 500.00, '2026-08-25', 'paypal', 'completed'),
+    (6, 200.00, '2026-06-01', 'bank_transfer', 'completed'),
+    (7, 450.00, '2026-09-05', 'credit_card', 'completed'),
+    (8, 300.00, '2026-07-02', 'paypal', 'completed'),
+    (9, 400.00, '2026-08-20', 'bank_transfer', 'completed'),
+    (10, 350.00, '2026-09-12', 'credit_card', 'completed'),
+    (11, 500.00, '2026-05-10', 'paypal', 'completed'),
+    (12, 200.00, '2026-07-20', 'bank_transfer', 'completed'),
+    (13, 450.00, '2026-08-28', 'credit_card', 'completed'),
+    (14, 300.00, '2026-10-01', 'paypal', 'completed'),
+    (15, 400.00, '2026-08-05', 'bank_transfer', 'completed');
