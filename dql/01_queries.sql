@@ -115,3 +115,69 @@ SELECT
     booking_status
 FROM bookings
 ORDER BY check_in_date ASC;
+
+
+Payments queries
+-- View all payments with their booking details
+SELECT
+    p.payment_id,
+    b.booking_id,
+    g.first_name,
+    g.last_name,
+    r.room_number,
+    p.amount,
+    p.payment_date,
+    p.payment_method,
+    p.status
+FROM payments p
+JOIN bookings b ON p.booking_id = b.booking_id
+JOIN guests g ON b.guest_id = g.guest_id
+JOIN rooms r ON b.room_id = r.room_id;
+
+-- View payments for a specific booking
+SELECT
+    p.payment_id,
+    p.amount,
+    p.payment_date,
+    p.payment_method,
+    p.status
+FROM payments p
+WHERE p.booking_id = 1;
+
+-- Revenue aggregation queries
+-- Total revenue from completed payments
+SELECT
+    SUM(p.amount) AS total_revenue
+FROM payments p
+WHERE p.status = 'completed';
+
+-- Revenue summary by payment method
+SELECT
+    p.payment_method,
+    AVG(p.amount) AS avg_payment_amount,
+    MIN(p.amount) AS smallest_payment,
+    MAX(p.amount) AS largest_payment,
+    SUM(p.amount) AS total_revenue
+FROM payments p
+GROUP BY p.payment_method
+ORDER BY total_revenue DESC;
+
+-- Revenue summary by booking status
+SELECT
+    b.booking_status,
+    SUM(p.amount) AS total_revenue,
+    AVG(p.amount) AS avg_payment_amount,
+    MIN(p.amount) AS min_payment_amount,
+    MAX(p.amount) AS max_payment_amount,
+    COUNT(*) AS payment_count
+FROM payments p
+JOIN bookings b ON p.booking_id = b.booking_id
+GROUP BY b.booking_status
+ORDER BY total_revenue DESC;
+
+-- Highest and lowest payment amounts
+SELECT
+    MIN(amount) AS lowest_payment,
+    MAX(amount) AS highest_payment
+FROM payments;
+
