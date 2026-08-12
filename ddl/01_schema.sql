@@ -29,3 +29,17 @@ CREATE TABLE bookings (
     CONSTRAINT chk_booking_status
         CHECK (booking_status IN ('pending', 'confirmed', 'checked_in', 'checked_out', 'cancelled'))
 );
+
+--payments table
+CREATE TABLE payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    booking_id INT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    payment_date DATE NOT NULL,
+    payment_method VARCHAR(20) NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'completed',
+    CONSTRAINT fk_payments_booking
+        FOREIGN KEY (booking_id) REFERENCES bookings(booking_id),
+    CONSTRAINT chk_payment_amount
+        CHECK (amount > 0)
+);
