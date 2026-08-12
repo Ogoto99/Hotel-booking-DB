@@ -23,14 +23,10 @@ The system is designed to represent a realistic hotel environment where guests c
 The database contains the following tables:
 
 1. `hotels` — Stores information about hotels.
-2. `room_types` — Stores different types of rooms and their pricing.
-3. `rooms` — Stores individual hotel rooms.
-4. `guests` — Stores hotel guest information.
 5. `bookings` — Stores guest room reservations.
 6. `payments` — Stores payments made for bookings.
-7. `services` — Stores additional hotel services.
-8. `booking_services` — Connects bookings with hotel services.
-9. `staff` — Stores hotel staff information.
+   
+**(when i was looking at the schema there are only 3tables.)
 
 ## 4. Main Relationships
 
@@ -115,8 +111,21 @@ The database will be tested using a fresh MySQL database to ensure that:
 * Dates and amounts are realistic.
 * All required DQL queries execute successfully.
 
-## 9. Team Collaboration
+## 9. Team members and Collaboration
+**Members.**
+Nancy-group leader
+stella
+Melekh
+Michael
+Michael
+Angelah
+Wendy
+Jane
+Otieno
+Josphat
+Vincent
 
+**Collaboration**
 The project is developed collaboratively using GitHub.
 
 Each group member is expected to contribute using their own GitHub account and make meaningful commits to the repository.
@@ -124,6 +133,7 @@ Each group member is expected to contribute using their own GitHub account and m
 The project follows the workflow:
 
 **Design → DDL → DML → DQL → Testing → Documentation → Submission**
+(there was no group members)
 
 ## 10. Database Technology
 
