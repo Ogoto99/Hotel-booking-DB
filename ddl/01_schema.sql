@@ -1,3 +1,17 @@
+--Hotels table
+CREATE TABLE hotels (
+    hotel_id INT AUTO_INCREMENT PRIMARY KEY,
+    hotel_name VARCHAR(100) NOT NULL UNIQUE,
+    location VARCHAR(100) NOT NULL,
+    address VARCHAR(200) NOT NULL,
+    phone VARCHAR(20) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    rating DECIMAL(2,1) NOT NULL DEFAULT 0.0,
+
+    CONSTRAINT chk_hotel_rating
+        CHECK (rating >= 0.0 AND rating <= 5.0)
+);
+
 -- Bookings table
 CREATE TABLE bookings (
     booking_id INT AUTO_INCREMENT PRIMARY KEY,

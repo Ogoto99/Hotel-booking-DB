@@ -1,0 +1,49 @@
+HOTEL BOOKING DATABASE — TESTING CHECKLIST
+
+DDL
+[ ] All tables create successfully
+[ ] Every table has a primary key
+[ ] Foreign keys work
+[ ] NOT NULL constraints work
+[ ] UNIQUE constraints work
+[ ] CHECK constraints work where required
+[ ] DEFAULT values work
+[ ] AUTO_INCREMENT primary key exists
+[ ] Composite key exists
+[ ] Many-to-many relationship exists
+[ ] DDL runs from top to bottom without errors
+
+DML
+[ ] At least 15 realistic rows per main table
+[ ] Foreign keys reference existing records
+[ ] Dates are logically correct
+[ ] Amounts are realistic
+[ ] No placeholder data
+[ ] DML runs without errors
+
+DQL
+[ ] COUNT
+[ ] SUM
+[ ] AVG
+[ ] MIN/MAX
+[ ] GROUP BY #1
+[ ] GROUP BY #2
+[ ] ORDER BY #1
+[ ] ORDER BY #2
+[ ] Multi-column ORDER BY
+[ ] HAVING #1
+[ ] HAVING #2
+[ ] Scalar subquery
+[ ] EXISTS/correlated subquery
+[ ] View #1
+[ ] View #2
+[ ] Every query answers a real business question
+
+GITHUB
+[ ] All members have access
+[ ] All members have contributed
+[ ] Meaningful commit messages
+[ ] Correct folder structure
+[ ] README complete
+[ ] ERD included
+[ ] Final repository tested
