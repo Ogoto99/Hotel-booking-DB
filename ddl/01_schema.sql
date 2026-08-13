@@ -43,3 +43,31 @@ CREATE TABLE payments (
     CONSTRAINT chk_payment_amount
         CHECK (amount > 0)
 );
+
+-- Staff table
+CREATE TABLE staff (
+    staff_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    gender VARCHAR(10) NOT NULL,
+    phone VARCHAR(20) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    position VARCHAR(100) NOT NULL,
+    department VARCHAR(100) NOT NULL,
+    date_hired DATE NOT NULL,
+    salary DECIMAL(10,2) NOT NULL,
+    employment_status VARCHAR(20) NOT NULL DEFAULT 'active',
+    hotel_id INT NOT NULL,
+
+    CONSTRAINT chk_staff_gender
+        CHECK (gender IN ('Male', 'Female')),
+
+    CONSTRAINT chk_staff_salary
+        CHECK (salary > 0),
+
+    CONSTRAINT chk_staff_status
+        CHECK (employment_status IN ('active', 'inactive')),
+
+    CONSTRAINT fk_staff_hotel
+        FOREIGN KEY (hotel_id) REFERENCES hotels(hotel_id)
+);
