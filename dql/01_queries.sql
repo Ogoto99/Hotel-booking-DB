@@ -57,7 +57,52 @@ FROM hotels
 WHERE rating >= 4.5
 ORDER BY rating DESC, hotel_name ASC;
 
+-- Guests queries
 
+-- View all guests
+SELECT
+    guest_id,
+    first_name,
+    last_name,
+    email,
+    phone,
+    address
+FROM guests;
+
+-- Count the total number of guests
+SELECT
+    COUNT(*) AS total_guests
+FROM guests;
+
+-- Find guests from Nairobi
+SELECT
+    first_name,
+    last_name,
+    email,
+    phone
+FROM guests
+WHERE address = 'Nairobi, Kenya';
+
+-- View guests alphabetically by last name
+SELECT
+    first_name,
+    last_name,
+    email
+FROM guests
+ORDER BY last_name ASC;
+
+-- View guests together with their bookings
+SELECT
+    g.guest_id,
+    g.first_name,
+    g.last_name,
+    b.booking_id,
+    b.check_in_date,
+    b.check_out_date,
+    b.booking_status
+FROM guests g
+JOIN bookings b
+    ON g.guest_id = b.guest_id;
 --Bookings queries
 -- View all bookings with their guest and room details
 SELECT
