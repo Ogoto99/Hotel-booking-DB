@@ -189,6 +189,77 @@ SELECT
 FROM payments p
 WHERE p.booking_id = 1;
 
+-- Staff queries
+-- View all staff members
+SELECT
+    staff_id,
+    first_name,
+    last_name,
+    role,
+    phone,
+    email,
+    hire_date
+FROM staff;
+
+-- View staff names and their roles
+SELECT
+    first_name,
+    last_name,
+    role
+FROM staff
+ORDER BY role ASC;
+
+-- Find all General Managers
+SELECT
+    staff_id,
+    first_name,
+    last_name,
+    phone,
+    email
+FROM staff
+WHERE role = 'General Manager';
+
+-- Count the number of staff in each role
+SELECT
+    role,
+    COUNT(*) AS total_staff
+FROM staff
+GROUP BY role
+ORDER BY total_staff DESC;
+
+-- View staff ordered by hire date
+SELECT
+    first_name,
+    last_name,
+    role,
+    hire_date
+FROM staff
+ORDER BY hire_date ASC;
+
+-- Find staff hired after January 1, 2023
+SELECT
+    first_name,
+    last_name,
+    role,
+    hire_date
+FROM staff
+WHERE hire_date > '2023-01-01'
+ORDER BY hire_date ASC;
+
+-- Count the total number of staff members
+SELECT
+    COUNT(*) AS total_staff_members
+FROM staff;
+
+-- View staff contact information
+SELECT
+    first_name,
+    last_name,
+    phone,
+    email
+FROM staff
+ORDER BY last_name ASC;
+
 -- Revenue aggregation queries
 -- Total revenue from completed payments
 SELECT
