@@ -14,7 +14,13 @@ INSERT INTO hotels (hotel_name, location, address, phone, email, rating) VALUES
     ('Sarova Mara Game Camp', 'Maasai Mara', 'Maasai Mara National Reserve', '+254709760700', 'maracamp@sarovahotels.com', 4.6),
     ('Keekorok Lodge', 'Maasai Mara', 'Maasai Mara National Reserve', '+254709760800', 'info@keekorok.com', 4.4),
     ('Fairmont Mount Kenya Safari Club', 'Nanyuki', 'Mount Kenya Road, Nanyuki', '+254709760900', 'info@fairmont.com', 4.7);
-
+-- Guest records
+INSERT INTO guests (first_name, last_name, email, phone, address) VALUES
+    ('Jane', 'Mwove', 'jane.mwove@gmail.com', '+254711234567', 'Nairobi, Kenya'),
+    ('Brian', 'Otieno', 'brian.otieno@gmail.com', '+254722345678', 'Kisumu, Kenya'),
+    ('Mercy', 'Wanjiku', 'mercy.wanjiku@gmail.com', '+254733456789', 'Nakuru, Kenya'),
+    ('Kevin', 'Kiptoo', 'kevin.kiptoo@gmail.com', '+254744567890', 'Eldoret, Kenya'),
+    ('Sharon', 'Achieng', 'sharon.achieng@gmail.com', '+254755678901', 'Mombasa, Kenya');
 -- Booking records
 INSERT INTO bookings (guest_id, room_id, check_in_date, check_out_date, booking_status) VALUES
     (1, 1, '2026-08-15', '2026-08-18', 'confirmed'),
