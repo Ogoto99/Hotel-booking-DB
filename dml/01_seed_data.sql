@@ -96,3 +96,35 @@ INSERT INTO staff (first_name, last_name, gender, phone, email, position, depart
     ('Jane', 'Wambui', 'Female', '0711000012', 'jane.wambui@hotel.com', 'General Manager', 'Management', '2021-12-01', 155000.00, 'active', 13),
     ('Collins', 'Maina', 'Male', '0711000013', 'collins.maina@hotel.com', 'General Manager', 'Management', '2023-01-09', 145000.00, 'active', 14),
     ('Grace', 'Muthoni', 'Female', '0711000014', 'grace.muthoni@hotel.com', 'General Manager', 'Management', '2020-11-16', 160000.00, 'active', 15);
+
+    -- Service records
+INSERT INTO services (service_name, description, price)
+VALUES
+('Breakfast', 'Full breakfast buffet', 1500.00),
+('Laundry', 'Laundry and ironing service', 800.00),
+('Spa', 'Full body spa treatment', 3000.00),
+('Airport Transfer', 'Airport pickup or drop-off', 2500.00),
+('Room Service', 'Food and drinks delivered to the room', 1200.00);
+
+-- Booking service records
+INSERT INTO booking_services (booking_id, service_id, quantity)
+VALUES
+(1, 1, 1),
+(1, 2, 1),
+(2, 3, 1),
+(2, 1, 1),
+(3, 4, 1),
+(3, 5, 2),
+(4, 1, 1),
+(4, 2, 2),
+(5, 5, 1),
+(6, 3, 1),
+(7, 1, 1),
+(8, 4, 1),
+(9, 2, 1),
+(10, 5, 1),
+(11, 1, 1),
+(12, 3, 1),
+(13, 4, 1),
+(14, 2, 1),
+(15, 5, 2);

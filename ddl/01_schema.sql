@@ -82,3 +82,27 @@ CREATE TABLE staff (
     CONSTRAINT fk_staff_hotel
         FOREIGN KEY (hotel_id) REFERENCES hotels(hotel_id)
 );
+
+
+-- Services table
+CREATE TABLE services (
+    service_id INT AUTO_INCREMENT PRIMARY KEY,
+    service_name VARCHAR(100) NOT NULL,
+    description VARCHAR(255),
+    price DECIMAL(10,2) NOT NULL
+);
+
+-- Booking services junction table
+CREATE TABLE booking_services (
+    booking_id INT NOT NULL,
+    service_id INT NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+
+    PRIMARY KEY (booking_id, service_id),
+
+    CONSTRAINT fk_booking_services_booking
+        FOREIGN KEY (booking_id) REFERENCES bookings(booking_id),
+
+    CONSTRAINT fk_booking_services_service
+        FOREIGN KEY (service_id) REFERENCES services(service_id)
+);
