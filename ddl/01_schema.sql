@@ -1,4 +1,15 @@
---Hotels table
+-- =========================================
+-- Create and use the database
+-- =========================================
+
+CREATE DATABASE IF NOT EXISTS hotel_booking;
+
+USE hotel_booking;
+
+-- =========================================
+-- Hotels Table
+-- =========================================
+
 CREATE TABLE hotels (
     hotel_id INT AUTO_INCREMENT PRIMARY KEY,
     hotel_name VARCHAR(100) NOT NULL UNIQUE,
@@ -12,7 +23,39 @@ CREATE TABLE hotels (
         CHECK (rating >= 0.0 AND rating <= 5.0)
 );
 
--- Guests table
+-- =========================================
+-- Rooms Table
+-- =========================================
+
+CREATE TABLE rooms (
+    room_id INT AUTO_INCREMENT PRIMARY KEY,
+    hotel_id INT NOT NULL,
+    room_number VARCHAR(10) NOT NULL,
+    room_type VARCHAR(30) NOT NULL,
+    price_per_night DECIMAL(10,2) NOT NULL,
+    room_status VARCHAR(20) NOT NULL DEFAULT 'Available',
+
+    CONSTRAINT fk_rooms_hotel
+        FOREIGN KEY (hotel_id)
+        REFERENCES hotels(hotel_id),
+
+    CONSTRAINT chk_room_price
+        CHECK (price_per_night > 0),
+
+    CONSTRAINT chk_room_status
+        CHECK (
+            room_status IN (
+                'Available',
+                'Occupied',
+                'Maintenance'
+            )
+        )
+);
+
+-- =========================================
+-- Guests Table
+-- =========================================
+
 CREATE TABLE guests (
     guest_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
@@ -23,7 +66,10 @@ CREATE TABLE guests (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Bookings table
+-- =========================================
+-- Bookings Table
+-- =========================================
+
 CREATE TABLE bookings (
     booking_id INT AUTO_INCREMENT PRIMARY KEY,
     guest_id INT NOT NULL,
@@ -31,17 +77,34 @@ CREATE TABLE bookings (
     check_in_date DATE NOT NULL,
     check_out_date DATE NOT NULL,
     booking_status VARCHAR(20) NOT NULL DEFAULT 'confirmed',
+
     CONSTRAINT fk_bookings_guest
-        FOREIGN KEY (guest_id) REFERENCES guests(guest_id),
+        FOREIGN KEY (guest_id)
+        REFERENCES guests(guest_id),
+
     CONSTRAINT fk_bookings_room
-        FOREIGN KEY (room_id) REFERENCES rooms(room_id),
+        FOREIGN KEY (room_id)
+        REFERENCES rooms(room_id),
+
     CONSTRAINT chk_booking_dates
         CHECK (check_out_date > check_in_date),
+
     CONSTRAINT chk_booking_status
-        CHECK (booking_status IN ('pending', 'confirmed', 'checked_in', 'checked_out', 'cancelled'))
+        CHECK (
+            booking_status IN (
+                'pending',
+                'confirmed',
+                'checked_in',
+                'checked_out',
+                'cancelled'
+            )
+        )
 );
 
---payments table
+-- =========================================
+-- Payments Table
+-- =========================================
+
 CREATE TABLE payments (
     payment_id INT AUTO_INCREMENT PRIMARY KEY,
     booking_id INT NOT NULL,
@@ -49,13 +112,19 @@ CREATE TABLE payments (
     payment_date DATE NOT NULL,
     payment_method VARCHAR(20) NOT NULL,
     status VARCHAR(20) NOT NULL DEFAULT 'completed',
+
     CONSTRAINT fk_payments_booking
-        FOREIGN KEY (booking_id) REFERENCES bookings(booking_id),
+        FOREIGN KEY (booking_id)
+        REFERENCES bookings(booking_id),
+
     CONSTRAINT chk_payment_amount
         CHECK (amount > 0)
 );
 
--- Staff table
+-- =========================================
+-- Staff Table
+-- =========================================
+
 CREATE TABLE staff (
     staff_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
@@ -77,22 +146,36 @@ CREATE TABLE staff (
         CHECK (salary > 0),
 
     CONSTRAINT chk_staff_status
-        CHECK (employment_status IN ('active', 'inactive')),
+        CHECK (
+            employment_status IN (
+                'active',
+                'inactive'
+            )
+        ),
 
     CONSTRAINT fk_staff_hotel
-        FOREIGN KEY (hotel_id) REFERENCES hotels(hotel_id)
+        FOREIGN KEY (hotel_id)
+        REFERENCES hotels(hotel_id)
 );
 
+-- =========================================
+-- Services Table
+-- =========================================
 
--- Services table
 CREATE TABLE services (
     service_id INT AUTO_INCREMENT PRIMARY KEY,
     service_name VARCHAR(100) NOT NULL,
     description VARCHAR(255),
-    price DECIMAL(10,2) NOT NULL
+    price DECIMAL(10,2) NOT NULL,
+
+    CONSTRAINT chk_service_price
+        CHECK (price >= 0)
 );
 
--- Booking services junction table
+-- =========================================
+-- Booking Services Junction Table
+-- =========================================
+
 CREATE TABLE booking_services (
     booking_id INT NOT NULL,
     service_id INT NOT NULL,
@@ -101,8 +184,13 @@ CREATE TABLE booking_services (
     PRIMARY KEY (booking_id, service_id),
 
     CONSTRAINT fk_booking_services_booking
-        FOREIGN KEY (booking_id) REFERENCES bookings(booking_id),
+        FOREIGN KEY (booking_id)
+        REFERENCES bookings(booking_id),
 
     CONSTRAINT fk_booking_services_service
-        FOREIGN KEY (service_id) REFERENCES services(service_id)
+        FOREIGN KEY (service_id)
+        REFERENCES services(service_id),
+
+    CONSTRAINT chk_booking_service_quantity
+        CHECK (quantity > 0)
 );

@@ -1,407 +1,124 @@
-Hotel Booking Database
+# Hotel Booking Database
 
-1. Project Overview
+## 1. Project Overview
 
 This project is a relational database system designed to manage hotel booking and management operations.
 
-The database models important hotel activities including hotels, room types, rooms, guests, bookings, payments, services, and staff.
+The database models important hotel activities including:
+
+- Hotels
+- Room types
+- Rooms
+- Guests
+- Bookings
+- Payments
+- Services
+- Booking services
+- Staff
 
 The project demonstrates the three main stages of SQL database development:
 
-- DDL — Data Definition Language
-- DML — Data Manipulation Language
-- DQL — Data Query Language
-
-2. Database Domain
-
-Domain: Hotel Booking and Management
-
-The system represents a realistic hotel environment where guests can make room bookings, make payments, and use additional hotel services.
-
-3. Main Database Tables
-
-The database contains the following tables:
-
-1. "hotels" — Stores information about hotels.
-2. "roomtypes" — Stores categories of hotel rooms.
-3. "rooms" — Stores individual hotel rooms and their status.
-4. "guests" — Stores information about guests.
-5. "bookings" — Stores guest room reservations, dates, and booking status.
-6. "payments" — Stores payments made for bookings.
-7. "services" — Stores additional hotel services.
-8. "booking_services" — Connects bookings with the services they use.
-9. "staff" — Stores information about hotel employees.
-
-4. Main Relationships
-
-The database contains the following relationships:
-
-- One hotel can have many room types.
-- One room type can have many rooms.
-- One hotel can have many staff members.
-- One guest can make many bookings.
-- One room can have many bookings over time.
-- A booking can have one or more payments.
-- A booking can use many services.
-- A service can be used by many bookings.
-- The "booking_services" table provides the many-to-many relationship between bookings and services.
-
-5. Repository Structure
-
-hotel-booking-database/
-│
-├── README.md
-│
-├── ddl/
-│   └── 01_schema.sql
-│
-├── dml/
-│   └── 01_seed_data.sql
-│
-├── dql/
-│   └── 01_queries.sql
-│
-└── docs/
-    └── erd.png
-
-6. SQL Phases
-
-DDL
-
-The DDL script creates the database tables, primary keys, foreign keys, relationships, and constraints.
-
-File:
-
-"ddl/01_schema.sql"
-
-DML
-
-The DML script inserts realistic sample data into the database.
-
-File:
-
-"dml/01_seed_data.sql"
-
-DQL
-
-The DQL script contains queries that answer realistic questions about the hotel business.
-
-File:
-
-"dql/01_queries.sql"
-
-7. Database Views
-
-The project includes two useful database views.
-
-"booking_summary"
-
-The "booking_summary" view provides a simplified summary of hotel bookings, including the booking ID, guest ID, room ID, check-in date, check-out date, and booking status.
-
-Example:
-
-SELECT * FROM booking_summary;
-
-"hotel_revenue"
-
-The "hotel_revenue" view summarizes completed payment revenue for each booking.
-
-Example:
-
-SELECT * FROM hotel_revenue;
-
-8. How to Run the Project
-
-Create or select a MySQL database and run the scripts in the following order:
-
-1. "ddl/01_schema.sql"
-2. "dml/01_seed_data.sql"
-3. "dql/01_queries.sql"
-
-The DDL must be successfully executed before running the DML, and the DML must be successfully executed before running the DQL.
-
-The database views should be created after the required tables and data are available.
-
-9. Testing
-
-The database will be tested using a fresh MySQL database to ensure that:
-
-- Tables are created without errors.
-- Primary and foreign keys work correctly.
-- Constraints work as expected.
-- Sample data is internally consistent.
-- Foreign-key references point to existing records.
-- Dates and amounts are realistic.
-- All required DQL queries execute successfully.
-- The "booking_summary" view works correctly.
-- The "hotel_revenue" view calculates completed payment revenue correctly.
-
-10. Entity Relationship Diagram
-
-The Entity Relationship Diagram (ERD) shows the tables in the database and the relationships between them.
-
-The ERD is available in:
-
-"docs/erd.png"
-
-11. Team Members and Collaboration
-
-Each group member contributes to a specific section of the project, including database design, tables, data, queries, documentation, ERD, views, testing, and GitHub integration.
-
-All members are required to make meaningful commits using their own GitHub accounts.
-
-12. Conclusion
-
-The Hotel Booking Database provides a structured system for managing hotel reservations and related operations.
-
-The project demonstrates relational database concepts including primary keys, foreign keys, constraints, joins, many-to-many relationships, SQL queries, and database views.4. "guests" — Stores information about guests.
-5. "bookings" — Stores guest room reservations, dates, and booking status.
-6. "payments" — Stores payments made for bookings.
-7. "services" — Stores additional hotel services.
-8. "booking_services" — Connects bookings with the services they use.
-9. "staff" — Stores information about hotel employees.
-
-4. Main Relationships
-
-The database contains the following relationships:
-
-- One hotel can have many room types.
-- One room type can have many rooms.
-- One hotel can have many staff members.
-- One guest can make many bookings.
-- One room can have many bookings over time.
-- A booking can have one or more payments.
-- A booking can use many services.
-- A service can be used by many bookings.
-- The "booking_services" table provides the many-to-many relationship between bookings and services.
-
-5. Repository Structure
-
-hotel-booking-database/
-│
-├── README.md
-│
-├── ddl/
-│   └── 01_schema.sql
-│
-├── dml/
-│   └── 01_seed_data.sql
-│
-├── dql/
-│   └── 01_queries.sql
-│
-└── docs/
-    └── erd.png
-
-6. SQL Phases
-
-DDL
-
-The DDL script creates the database tables, primary keys, foreign keys, relationships, and constraints.
-
-File:
-
-"ddl/01_schema.sql"
-
-DML
-
-The DML script inserts realistic sample data into the database.
-
-File:
-
-"dml/01_seed_data.sql"
-
-DQL
-
-The DQL script contains queries that answer realistic questions about the hotel business.
-
-File:
-
-"dql/01_queries.sql"
-
-7. Database Views
-
-The project includes two useful database views.
-
-"booking_summary"
-
-The "booking_summary" view provides a simplified summary of hotel bookings, including the booking ID, guest ID, room ID, check-in date, check-out date, and booking status.
-
-Example:
-
-SELECT * FROM booking_summary;
-
-"hotel_revenue"
-
-The "hotel_revenue" view summarizes completed payment revenue for each booking.
-
-Example:
-
-SELECT * FROM hotel_revenue;
-
-8. How to Run the Project
-
-Create or select a MySQL database and run the scripts in the following order:
-
-1. "ddl/01_schema.sql"
-2. "dml/01_seed_data.sql"
-3. "dql/01_queries.sql"
-
-The DDL must be successfully executed before running the DML, and the DML must be successfully executed before running the DQL.
-
-The database views should be created after the required tables and data are available.
-
-9. Testing
-
-The database will be tested using a fresh MySQL database to ensure that:
-
-- Tables are created without errors.
-- Primary and foreign keys work correctly.
-- Constraints work as expected.
-- Sample data is internally consistent.
-- Foreign-key references point to existing records.
-- Dates and amounts are realistic.
-- All required DQL queries execute successfully.
-- The "booking_summary" view works correctly.
-- The "hotel_revenue" view calculates completed payment revenue correctly.
-
-10. Entity Relationship Diagram
-
-The Entity Relationship Diagram (ERD) shows the tables in the database and the relationships between them.
-
-The ERD is available in:
-
-"docs/erd.png"
-
-11. Team Members and Collaboration
-
-Each group member contributes to a specific section of the project, including database design, tables, data, queries, documentation, ERD, views, testing, and GitHub integration.
-
-All members are required to make meaningful commits using their own GitHub accounts.
-
-12. Conclusion
-
-The Hotel Booking Database provides a structured system for managing hotel reservations and related operations.
-
-The project demonstrates relational database concepts including primary keys, foreign keys, constraints, joins, many-to-many relationships, SQL queries, and database views.
-* DML — Data Manipulation Language
-* DQL — Data Query Language
-
-## 2. Database Domain
+- **DDL — Data Definition Language**
+- **DML — Data Manipulation Language**
+- **DQL — Data Query Language**
+
+The database is designed using **MySQL** and demonstrates the use of:
+
+- Primary keys
+- Foreign keys
+- Constraints
+- Relationships
+- Many-to-many relationships
+- JOINs
+- Aggregate functions
+- GROUP BY
+- ORDER BY
+- HAVING
+- Subqueries
+- EXISTS
+- Database views
+
+---
+
+# 2. Database Domain
 
 **Domain:** Hotel Booking and Management
 
-The system is designed to represent a realistic hotel environment where guests can make room bookings, make payments, and use additional hotel services.
+The system represents a realistic hotel environment where guests can:
 
-## 3. Main Database Tables
+1. Make room bookings.
+2. Check in and check out.
+3. Make payments.
+4. Use additional hotel services.
+
+Hotel management can use the database to manage:
+
+- Hotels
+- Room types
+- Rooms
+- Guests
+- Bookings
+- Payments
+- Services
+- Staff
+- Revenue information
+
+---
+
+# 3. Main Database Tables
 
 The database contains the following tables:
 
-1. `hotels` — Stores information about hotels.
-5. `bookings` — Stores guest room reservations.
-6. `payments` — Stores payments made for bookings.
-   
-**(when i was looking at the schema there are only 3tables.)
+| Table | Description |
+|---|---|
+| `hotels` | Stores information about hotels. |
+| `room_types` | Stores categories of hotel rooms. |
+| `rooms` | Stores individual hotel rooms and their details. |
+| `guests` | Stores information about hotel guests. |
+| `bookings` | Stores guest room reservations, dates, and booking status. |
+| `payments` | Stores payments made for bookings. |
+| `services` | Stores additional hotel services offered to guests. |
+| `booking_services` | Connects bookings with the services they use. |
+| `staff` | Stores information about hotel employees. |
 
-## 4. Main Relationships
+---
+
+# 4. Main Database Relationships
 
 The database contains the following relationships:
 
-* One hotel can have many rooms.
-* One room type can be assigned to many rooms.
-* One guest can make many bookings.
-* One room can have many bookings over time.
-* A booking can have one or more payments.
-* A booking can use many services.
-* A service can be used by many bookings.
-* One hotel can have many staff members.
+- One hotel can have many room types.
+- One room type can have many rooms.
+- One hotel can have many staff members.
+- One guest can make many bookings.
+- One room can have many bookings over time.
+- A booking can have one or more payments.
+- A booking can use many services.
+- A service can be used by many bookings.
+- The `booking_services` table provides the many-to-many relationship between bookings and services.
 
-The `booking_services` table provides the many-to-many relationship between bookings and services.
-
-## 5. Repository Structure
+### Relationship Overview
 
 ```text
-hotel-booking-database/
-│
-├── README.md
-│
-├── ddl/
-│   └── 01_schema.sql
-│
-├── dml/
-│   └── 01_seed_data.sql
-│
-├── dql/
-│   └── 01_queries.sql
-│
-└── docs/
-    └── erd.png
-```
+HOTELS
+   │
+   ├──────────────< ROOM_TYPES
+   │                    │
+   │                    └──────────────< ROOMS
+   │                                      │
+   │                                      │
+   │                                      ▼
+   │                                  BOOKINGS
+   │                                  /      \
+   │                                 /        \
+   │                                ▼          ▼
+   │                            PAYMENTS   BOOKING_SERVICES
+   │                                             │
+   │                                             ▼
+   │                                          SERVICES
+   │
+   └──────────────< STAFF
 
-## 6. SQL Phases
-
-### DDL
-
-The DDL script creates the database tables, primary keys, foreign keys, and other constraints.
-
-File:
-
-`ddl/01_schema.sql`
-
-### DML
-
-The DML script inserts realistic sample data into the database.
-
-File:
-
-`dml/01_seed_data.sql`
-
-### DQL
-
-The DQL script contains queries that answer realistic questions about the hotel business.
-
-File:
-
-`dql/01_queries.sql`
-
-## 7. How to Run the Project
-
-Create or select a MySQL database and run the scripts in the following order:
-
-1. `ddl/01_schema.sql`
-2. `dml/01_seed_data.sql`
-3. `dql/01_queries.sql`
-
-The DDL must be successfully executed before running the DML, and the DML must be successfully executed before running the DQL.
-
-## 8. Testing
-
-The database will be tested using a fresh MySQL database to ensure that:
-
-* Tables are created without errors.
-* Primary and foreign keys work correctly.
-* Constraints work as expected.
-* Sample data is internally consistent.
-* Foreign-key references point to existing records.
-* Dates and amounts are realistic.
-* All required DQL queries execute successfully.
-
-## 9. Team members and Collaboration
-**Members.**
-Melekh(group leader), Nancy, Michael, Michael, Angelah, Wendy, Jane, Otieno, Josphat, Vincent, Stella
-
-**Collaboration**
-The project is developed collaboratively using GitHub.
-
-Each group member is expected to contribute using their own GitHub account and make meaningful commits to the repository.
-
-The project follows the workflow:
-
-**Design → DDL → DML → DQL → Testing → Documentation → Submission**
-(there was no group members)
-
-## 10. Database Technology
-
-**Database:** MySQL
-
-**Version:** To be confirmed based on the team's MySQL environment.
+GUESTS
+   │
+   └──────────────< BOOKINGS
