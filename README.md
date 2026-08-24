@@ -12,7 +12,8 @@
 | Michael | @MichaelWahinya | Services & booking services |
 | Nancy | @Nancy-mm | Staff |
 | Vincent | @vincentmutuma18-creator | DQL & advanced queries |
-| Whist-Estella | @whist-estella | README, ERD & views |
+| Whitney | @whist-estella | ERD & views |
+| Brayan | @Notmadb | README & testing |
 
 ## Domain
 
